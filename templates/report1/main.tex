@@ -1,0 +1,27 @@
+\input{sections/preamble.tex}
+
+\begin{document}
+
+\input{sections/title.tex}
+
+\begin{preface}
+    \input{sections/preface.tex}
+    \newpage
+    \addcontentsline{toc}{section}{Table of Contents}
+    \tableofcontents
+    \newpage
+\end{preface}
+
+\begin{content}
+    \input{sections/content.tex}
+    \newpage
+    \addcontentsline{toc}{section}{References}
+    \printbibliography
+    \newpage
+\end{content}
+
+\begin{appendices}
+    \input{sections/appendix.tex}
+\end{appendices}
+
+\end{document}

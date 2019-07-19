@@ -1,0 +1,71 @@
+%-------------------------------------------------------------------------------
+%
+% Layout
+%
+%-------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[title,titletoc]{appendix}
+% List references in the order they appear and sort multiple citations in
+% increasing order.
+\usepackage[sortcites,backend=biber,citestyle=numeric,bibstyle=ieee,sorting=none]{biblatex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{csquotes}
+
+% Package: biblatex.
+\addbibresource{./bib/references.bib}
+
+% Package: listing.
+\lstset{
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=2,
+  columns=flexible,
+  basicstyle=\ttfamily
+}
+
+% Number in-text objects relative to section.
+\AtBeginDocument{
+  \renewcommand{\theequation}{\thesection.\arabic{equation}}
+  \renewcommand{\thefigure}{\thesection.\arabic{figure}}
+  \renewcommand{\thetable}{\thesection.\arabic{table}}
+  \renewcommand{\thelstlisting}{\thesection.\arabic{lstlisting}}
+}
+
+\graphicspath{{./media/}}
+
+%-------------------------------------------------------------------------------
+%
+% Macros
+%
+%-------------------------------------------------------------------------------
+
+\newcommand{\mono}[1]{\lstinline{#1}}
+
+%-------------------------------------------------------------------------------
+%
+% Environments
+%
+%-------------------------------------------------------------------------------
+
+\newenvironment{preface}{
+  \addtocontents{toc}{\setcounter{tocdepth}{1}}
+  \pagenumbering{roman}
+}{}
+
+\newenvironment{content}{
+  \addtocontents{toc}{\setcounter{tocdepth}{2}}
+  \pagenumbering{arabic}
+}{}
