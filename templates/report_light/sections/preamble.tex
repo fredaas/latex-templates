@@ -9,10 +9,13 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[title,titletoc]{appendix}
-% List references in the order they appear and sort multiple citations in
-% increasing order.
-\usepackage[sortcites,backend=biber,citestyle=numeric,bibstyle=ieee,sorting=none]{biblatex}
+\usepackage[
+  sortcites,
+  backend=biber,
+  citestyle=numeric,
+  bibstyle=ieee,
+  sorting=none,
+  dashed=false]{biblatex}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{parskip}
@@ -29,10 +32,10 @@
 
 % Package: listing.
 \lstset{
-  keepspaces=true,
+  keepspaces=false,
   showstringspaces=false,
   tabsize=2,
-  columns=flexible,
+  columns=fullflexible,
   basicstyle=\ttfamily
 }
 
@@ -52,20 +55,6 @@
 %
 %-------------------------------------------------------------------------------
 
+\newcommand{\latin}[1]{\emph{#1}}
+
 \newcommand{\mono}[1]{\lstinline{#1}}
-
-%-------------------------------------------------------------------------------
-%
-% Environments
-%
-%-------------------------------------------------------------------------------
-
-\newenvironment{preface}{
-  \addtocontents{toc}{\setcounter{tocdepth}{1}}
-  \pagenumbering{roman}
-}{}
-
-\newenvironment{content}{
-  \addtocontents{toc}{\setcounter{tocdepth}{2}}
-  \pagenumbering{arabic}
-}{}

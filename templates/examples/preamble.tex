@@ -1,0 +1,56 @@
+\documentclass[oneside]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{parskip}
+\usepackage{mdframed}
+\usepackage{enumitem}
+
+% Package: xcolor
+\newcommand{\cbox}[1]{\textcolor{#1}{\rule{2mm}{2mm}}}
+
+\definecolor{black}{HTML}{000000}
+\definecolor{white}{HTML}{FFFFFF}
+
+% Package: enumitem
+\setlist[description]{style=nextline,font={\normalfont\emph}}
+
+% Package: mdframed
+\mdfsetup{
+  frametitlefont=\normalfont,
+  leftline=true,
+  rightline=false,
+  topline=false,
+  bottomline=false,
+  linewidth=0.5mm,
+  skipabove=\topskip,
+  skipbelow=\topskip,
+}
+
+%-------------------------------------------------------------------------------
+%
+% Environment: Citation
+%
+%-------------------------------------------------------------------------------
+
+\mdfdefinestyle{emphasize}{
+  linecolor=black,
+  backgroundcolor=white
+}
+
+\newcounter{emphasize}
+
+\newenvironment{emphasize}{
+  \refstepcounter{emphasize}
+  \begin{mdframed}[style=emphasize,frametitle=\textbf{Citation \theemphasize}]
+  \begin{itshape}
+}{
+  \end{itshape}
+  \end{mdframed}
+}
+
+\AtBeginDocument {
+  \renewcommand{\theemphasize}{\thesection.\arabic{emphasize}}
+}

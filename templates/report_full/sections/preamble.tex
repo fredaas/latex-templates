@@ -1,0 +1,131 @@
+%-------------------------------------------------------------------------------
+%
+% Layout
+%
+%-------------------------------------------------------------------------------
+
+% Use option 'twoside' for printed version
+\documentclass[oneside,openany]{report}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[title,titletoc]{appendix}
+\usepackage[
+  sortcites,
+  backend=biber,
+  citestyle=numeric,
+  bibstyle=ieee,
+  sorting=none,
+  dashed=false]{biblatex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{csquotes}
+\usepackage{color}
+\usepackage{enumitem}
+
+% Package: enumitem
+\setlist[description]{style=nextline,font={\normalfont\emph}}
+
+% Package: biblatex
+\addbibresource{./bib/references.bib}
+
+% Package: caption
+\DeclareCaptionLabelSeparator{token}{:}
+\captionsetup[figure]{labelfont={bf},name={Figure},labelsep=token}
+\captionsetup[table]{labelfont={bf},name={Table},labelsep=token}
+
+% Package: listings
+\lstset{
+  keepspaces=false,
+  showstringspaces=false,
+  tabsize=2,
+  columns=fullflexible,
+  basicstyle=\ttfamily
+}
+
+\lstdefinestyle{source}{
+  breaklines=true,
+  prebreak=\mbox{\space\textcolor{red}{$\hookleftarrow$}},
+  numbers=left,
+  numberstyle=\ttfamily\footnotesize,
+}
+
+% Number in-text objects relative to chapter
+\AtBeginDocument{
+  \renewcommand{\theequation}{\thechapter.\arabic{equation}}
+  \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+  \renewcommand{\thetable}{\thechapter.\arabic{table}}
+  \renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}}
+}
+
+\graphicspath{{./media/}}
+
+%-------------------------------------------------------------------------------
+%
+% Macros
+%
+%-------------------------------------------------------------------------------
+
+\newcommand{\latin}[1]{\emph{#1}}
+
+\newcommand{\mono}[1]{\lstinline{#1}}
+
+\newcommand{\blankpage}{\clearpage\null\newpage}
+
+\newcommand{\overview}{
+  \newpage
+  \tableofcontents
+  \newpage
+}
+
+\newcommand{\figures}{
+  \newpage
+  \addcontentsline{toc}{chapter}{List of Figures}
+  \listoffigures
+  \newpage
+}
+
+\newcommand{\tables}{
+  \newpage
+  \addcontentsline{toc}{chapter}{List of Tables}
+  \listoftables
+  \newpage
+}
+
+\newcommand{\references}{
+  \newpage
+  \addcontentsline{toc}{chapter}{References}
+  \printbibliography
+  \newpage
+}
+
+%-------------------------------------------------------------------------------
+%
+% Environments
+%
+%-------------------------------------------------------------------------------
+
+\newenvironment{preface}{
+  \newpage
+  \addtocontents{toc}{\setcounter{tocdepth}{1}}
+  \pagenumbering{roman}
+}{
+  \newpage
+}
+
+\newenvironment{content}{
+  \newpage
+  \addtocontents{toc}{\setcounter{tocdepth}{1}}
+  \pagenumbering{arabic}
+}{
+  \newpage
+}
