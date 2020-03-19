@@ -1,24 +1,10 @@
-LATEX TEMPLATES
+DESCRIPTION
 --------------------------------------------------------------------------------
 
-SETUP: INSTALL TEX LIVE
+LaTeX templates.
 
-For the most recent version of TeX Live, download the installer:
+BUILDING
+--------------------------------------------------------------------------------
 
-    wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-
-Then run the install script:
-
-    tar -xzvf install-tl-unx.tar.gz
-    cd install-tl-*
-    ./install-tl
-
-USAGE
-
-The templates directory contains document blueprints and showcases of packages.
-To build a document, run:
-
-    make
-
-This will invoke latexmk which watches the document(s) for changes and rebuilds
-if changes are detected.
+The quickest way to get up and running with LaTeX locally, is by installing
+texparse (https://github.com/fredaas/texparse).
