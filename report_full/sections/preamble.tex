@@ -11,13 +11,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[title,titletoc]{appendix}
-\usepackage[
-  sortcites,
-  backend=biber,
-  citestyle=numeric,
-  bibstyle=ieee,
-  sorting=none,
-  dashed=false]{biblatex}
+\usepackage[sortcites,backend=biber,citestyle=numeric,bibstyle=ieee,sorting=none,dashed=false]{biblatex}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{parskip}
@@ -27,9 +21,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{subcaption}
 \usepackage{csquotes}
-\usepackage{color}
 \usepackage{enumitem}
 
 % Package: enumitem
@@ -54,7 +46,7 @@
 
 \lstdefinestyle{source}{
   breaklines=true,
-  prebreak=\mbox{\space\textcolor{red}{$\hookleftarrow$}},
+  prebreak=\mbox{\space$\hookleftarrow$},
   numbers=left,
   numberstyle=\ttfamily\footnotesize,
 }
@@ -77,57 +69,6 @@
 %
 %-------------------------------------------------------------------------------
 
-\newcommand{\latin}[1]{\emph{#1}}
-
-\newcommand{\mono}[1]{\lstinline{#1}}
+\newcommand{\code}[1]{\lstinline{#1}}
 
 \newcommand{\blankpage}{\clearpage\null\newpage}
-
-\newcommand{\overview}{
-  \newpage
-  \tableofcontents
-  \newpage
-}
-
-\newcommand{\figures}{
-  \newpage
-  \addcontentsline{toc}{chapter}{List of Figures}
-  \listoffigures
-  \newpage
-}
-
-\newcommand{\tables}{
-  \newpage
-  \addcontentsline{toc}{chapter}{List of Tables}
-  \listoftables
-  \newpage
-}
-
-\newcommand{\references}{
-  \newpage
-  \addcontentsline{toc}{chapter}{References}
-  \printbibliography
-  \newpage
-}
-
-%-------------------------------------------------------------------------------
-%
-% Environments
-%
-%-------------------------------------------------------------------------------
-
-\newenvironment{preface}{
-  \newpage
-  \addtocontents{toc}{\setcounter{tocdepth}{1}}
-  \pagenumbering{roman}
-}{
-  \newpage
-}
-
-\newenvironment{content}{
-  \newpage
-  \addtocontents{toc}{\setcounter{tocdepth}{1}}
-  \pagenumbering{arabic}
-}{
-  \newpage
-}
