@@ -11,39 +11,59 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[title,titletoc]{appendix}
-\usepackage[sortcites,backend=biber,citestyle=numeric,bibstyle=ieee,sorting=none,dashed=false]{biblatex}
+\usepackage[margin=15mm]{caption}
+\usepackage[
+  sortcites,         % List multiple citations in increasing order
+  backend=biber,
+  citestyle=numeric,
+  bibstyle=ieee,
+  sorting=none,      % List bibliography entries in the order they appear
+  dashed=false,      % Never dash author names
+  maxbibnames=3,
+  minbibnames=3,
+]{biblatex}
+\usepackage[linktocpage]{hyperref}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{parskip}
 \usepackage{listings}
-\usepackage{caption}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{csquotes}
 \usepackage{enumitem}
+\usepackage{courier}
+\usepackage{xcolor}
+
+% Package: xcolor
+\definecolor{grey}{HTML}{F4F4F4}
 
 % Package: enumitem
-\setlist[description]{style=nextline,font={\normalfont\emph}}
+\setlist[description]{font={\normalfont\emph}}
 
 % Package: biblatex
 \addbibresource{./references.bib}
 
 % Package: caption
-\DeclareCaptionLabelSeparator{token}{: }
-\captionsetup[figure]{labelfont={bf},name={Figure},labelsep=token}
-\captionsetup[table]{labelfont={bf},name={Table},labelsep=token}
+\DeclareCaptionLabelSeparator{token}{\;\;}
+\DeclareCaptionFormat{listing}{#1#2#3}
+\captionsetup[figure]{labelfont=bf,labelsep=token}
+\captionsetup[table]{labelfont=bf,labelsep=token}
+\captionsetup[lstlisting]{labelfont=bf,labelsep=token,format=listing}
 
 % Package: listings
 \lstset{
+  backgroundcolor=\color{grey},
   keepspaces=false,
   showstringspaces=false,
   tabsize=2,
   columns=fullflexible,
-  basicstyle=\ttfamily
+  basicstyle=\ttfamily\small,
 }
-
+\lstdefinestyle{inline}{
+  basicstyle=\ttfamily\normalsize,
+}
 \lstdefinestyle{source}{
   breaklines=true,
   prebreak=\mbox{\space$\hookleftarrow$},
@@ -51,12 +71,16 @@
   numberstyle=\ttfamily\footnotesize,
 }
 
-% Number in-text objects relative to chapter
 \AtBeginDocument{
   \renewcommand{\theequation}{\thechapter.\arabic{equation}}
   \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
   \renewcommand{\thetable}{\thechapter.\arabic{table}}
   \renewcommand{\thelstlisting}{\thechapter.\arabic{lstlisting}}
+  \renewcommand{\listfigurename}{Figures}
+  \renewcommand{\listtablename}{Tables}
+  \renewcommand{\lstlistlistingname}{Listings}
+  \renewcommand{\sectionautorefname}{Section}
+  \newcommand{\Appendixautorefname}{Appendix}
 }
 
 \graphicspath{{./media/}}
@@ -69,6 +93,8 @@
 %
 %-------------------------------------------------------------------------------
 
-\newcommand{\code}[1]{\lstinline{#1}}
-
+\newcommand{\mfunc}[2]{\text{#1}\mathopen{}\left\{#2\right\}\mathclose{}}
+\newcommand{\mslant}[1]{\mathit{#1}}
+\newcommand{\slant}[1]{\textit{#1}}
+\newcommand{\code}[1]{\lstinline[style=inline]{#1}}
 \newcommand{\blankpage}{\clearpage\null\newpage}
